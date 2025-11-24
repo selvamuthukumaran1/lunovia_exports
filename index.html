@@ -1,456 +1,620 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Lunovia Exports Pvt Ltd</title>
+  <meta name="description" content="Lunovia Exports Pvt Ltd — India’s freshness and innovation worldwide. Agri, spices, oils, textiles, minerals, tea, coffee, marine, eco-friendly products." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #222; }
-    header { background: #106da3; color: white; text-align: center; padding: 60px 20px; }
-    header h1 { font-size: 2.2em; margin-bottom: 10px; }
-    header p { font-size: 1.1em; }
-    nav { background: #102a43; display: flex; justify-content: center; flex-wrap: wrap; }
-    nav a { color: white; text-decoration: none; padding: 14px 20px; display: block; }
-    nav a:hover { background: #1b4965; }
-  /* Make sections full-bleed so content can span the full viewport width */
-  section { padding: 50px 20px; width: 100%; max-width: none; margin: 0; }
-    h2 { color: #0b3954; margin-bottom: 20px; text-align: center; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .card { border: 1px solid #ddd; border-radius: 10px; padding: 20px; text-align: center; background: #f9f9f9; }
-    .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
-    footer { background: #0b3954; color: white; text-align: center; padding: 20px; margin-top: 30px; }
-    ul { list-style-type: disc; padding-left: 20px; }
-    .cert-logos img { width: 60px; margin: 10px; }
-    .map { text-align: center; margin-top: 20px; }
-    iframe { width: 100%; height: 300px; border: none; }
-    /* Carousel Styles */
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      max-width: none;
-      margin: 0;
-      padding: 20px;
+    :root{
+      --brand-ink:#0b3954;
+      --brand-ink-2:#102a43;
+      --brand-accent:#106da3;
+      --accent-warn:#ffcc00;
+      --bg:#ffffff;
+      --muted:#f7f9fb;
+      --card:#f9f9f9;
+      --text:#222222;
+      --maxw:1200px;
+      --radius:14px;
+      --shadow:0 8px 24px rgba(0,0,0,0.08);
+      --ring:0 0 0 3px rgba(16,109,163,0.18);
     }
-    .carousel-track {
-      position: relative;
-      height: 300px;
-      overflow: hidden;
+    /* Global reset and fluid type */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+      text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      font-size:clamp(15px, 1.2vw + 0.5rem, 18px);
     }
-    .carousel-item {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      padding: 20px;
-      background: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    img{max-width:100%;display:block;height:auto}
+    a{color:inherit}
+    .container{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(16px,4vw,24px)}
+    section{padding:clamp(28px,6vw,64px) 0}
+    h1,h2,h3{color:var(--brand-ink);line-height:1.25;margin:0 0 12px}
+    h1{font-size:clamp(28px,4vw,42px);font-weight:700}
+    h2{font-size:clamp(22px,3vw,32px);font-weight:700;text-align:center}
+    h3{font-size:clamp(18px,2.2vw,24px);font-weight:600}
+    p{margin:0 0 12px}
+    ul{padding-left:1.1rem}
+
+    /* Header + Hero */
+    header.hero{
+      background:linear-gradient(120deg,var(--brand-accent),#0b5c8a 60%);
+      color:#fff;
+      position:relative;
+      isolation:isolate;
+      overflow:hidden;
     }
-    .carousel-item.active {
-      opacity: 1;
-      z-index: 1;
+    header.hero::after{
+      content:"";
+      position:absolute;inset:-20% -10% auto -10%;
+      height:70%;
+      background:radial-gradient(60% 60% at 30% 50%, rgba(255,255,255,0.15), transparent 60%),
+                 radial-gradient(50% 50% at 70% 40%, rgba(255,255,255,0.12), transparent 60%);
+      pointer-events:none;z-index:0;
     }
-    .carousel-item h3 {
-      color: #0b3954;
-      margin-bottom: 15px;
-      font-size: 1.4em;
+    .hero-inner{position:relative;z-index:1;display:grid;gap:18px;justify-items:center;text-align:center;padding:clamp(36px,8vw,84px) 0}
+    .hero-cta{
+      display:inline-flex;align-items:center;gap:10px;
+      background:var(--accent-warn);color:#000;
+      padding:12px 18px;border-radius:999px;text-decoration:none;font-weight:700;
+      box-shadow:var(--shadow);
     }
-    .carousel-item p {
-      line-height: 1.6;
-      color: #333;
+    .hero-cta:focus-visible{outline:none;box-shadow:var(--ring)}
+    .hero-badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .badge{
+      background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.25);
+      padding:6px 10px;border-radius:999px;font-size:0.9em;backdrop-filter:blur(6px)
     }
-    .carousel-nav button {
-      position: absolute;
-      top: 50%;
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lunovia Exports Pvt Ltd</title>
-        <style>
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #222; }
-          header { background: #0b3954; color: white; text-align: center; padding: 60px 20px; }
-          header h1 { font-size: 2.2em; margin-bottom: 10px; }
-          header p { font-size: 1.1em; }
-          nav { background: #102a43; display: flex; justify-content: center; flex-wrap: wrap; }
-          nav a { color: white; text-decoration: none; padding: 14px 20px; display: block; }
-          nav a:hover { background: #1b4965; }
-          section { padding: 50px 20px; max-width: 1100px; margin: auto; }
-          h2 { color: #0b3954; margin-bottom: 20px; text-align: center; }
-          .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-          .card { border: 1px solid #ddd; border-radius: 10px; padding: 20px; text-align: center; background: #f9f9f9; }
-          .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
-          footer { background: #0b3954; color: white; text-align: center; padding: 20px; margin-top: 30px; }
-          ul { list-style-type: disc; padding-left: 20px; }
-          .cert-logos img { width: 60px; margin: 10px; }
-          .map { text-align: center; margin-top: 20px; }
-          iframe { width: 100%; height: 300px; border: none; }
-          @media(max-width:600px){
-            header h1{ font-size:1.6em; }
-            nav a{ padding:10px; font-size:0.9em; }
-          }
-        </style>
-      </head>
-      <body>
 
-        <header>
-          <h1>Lunovia Exports Pvt Ltd</h1>
-          <p>Exporting India’s Freshness & Innovation Worldwide</p>
-          <a href="#contact" style="background:#ffcc00;color:#000;padding:10px 20px;border-radius:5px;text-decoration:none;font-weight:bold;">Request a Quote</a>
-        </header>
+    /* Top Nav with off-canvas */
+    .topbar{
+      background:var(--brand-ink-2);color:#fff;position:sticky;top:0;z-index:50
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-logo{
+      width:40px;height:40px;border-radius:10px;background:#fff;display:grid;place-items:center;
+      color:var(--brand-accent);font-weight:800;box-shadow:var(--shadow)
+    }
+    .brand-name{font-weight:700;letter-spacing:0.2px}
+    .nav-links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .nav-links a{
+      color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;
+    }
+    .nav-links a:hover{background:#1b4965}
+    .hamburger{
+      display:inline-flex;flex-direction:column;gap:4px;background:transparent;border:none;color:#fff;
+      width:42px;height:42px;align-items:center;justify-content:center;border-radius:10px
+    }
+    .hamburger:focus-visible{outline:none;box-shadow:var(--ring)}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px}
+    /* off-canvas */
+    .drawer{
+      position:fixed;inset:0 0 0 auto;width:min(82vw,340px);background:#0e2538;color:#fff;
+      transform:translateX(100%);transition:transform .3s ease;z-index:60;
+      display:flex;flex-direction:column;padding:18px
+    }
+    .drawer.open{transform:translateX(0)}
+    .drawer a{color:#fff;text-decoration:none;padding:12px;border-radius:8px}
+    .drawer a:hover{background:#14344d}
+    .scrim{
+      position:fixed;inset:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(2px);
+      opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:55
+    }
+    .scrim.show{opacity:1;pointer-events:auto}
 
-        <nav>
-          <a href="#about">About</a>
-          <a href="#products">Products</a>
-          <a href="#process">Export Process</a>
-          <a href="#cert">Certifications</a>
-          <a href="#global">Global Reach</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#technical">Technical</a>
-          <a href="#contact">Contact</a>
-        </nav>
+    /* Grids */
+    .grid{
+      display:grid;gap:clamp(12px,2.4vw,22px);
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    }
+    .card{
+      background:var(--card);border:1px solid #e9eef3;border-radius:var(--radius);padding:16px;
+      box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px
+    }
+    .card img{border-radius:10px;height:180px;object-fit:cover}
+    .muted{color:#334e68}
 
-        <section id="about">
-          <h2>About Us</h2>
-          <p>Lunovia Exports Pvt Ltd is a diversified export company from India dealing in high-quality <b>agri products, spices, edible oils, textiles, minerals, tea, coffee, marine and eco-friendly products</b>. We aim to deliver excellence and sustainability through every shipment.</p><br>
-          <p><b>Vision:</b> Delivering India’s natural bounty worldwide with integrity and innovation.</p>
-          <p><b>Mission:</b> To be a trusted partner for global buyers by ensuring quality, timely delivery, and ethical trade practices.</p>
-          <p><b>Why Choose Us?</b> Rigorous quality control, certified standards, customized packaging, and strong farmer & supplier partnerships.</p>
-        </section>
+    /* Section accents */
+    .alt{background:var(--muted)}
 
-        <section id="products">
-          <h2>Our Products</h2>
-          <div class="grid">
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1604899651552-8d0d56e1b053" alt="Fruits">
-              <h3>Fruits & Vegetables</h3>
-              <p>Fresh, export-grade produce with global quality standards.</p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0" alt="Spices">
-              <h3>Spices & Grains</h3>
-              <p>Authentic Indian spices & premium grains packed securely.</p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1590080875830-9d9425c7a268" alt="Marine">
-              <h3>Marine & Meat Products</h3>
-              <p>Frozen seafood and poultry exported with hygiene assurance.</p>
-            </div>
-            <div class="card">
-              <img src="https://images.unsplash.com/photo-1578301978693-85b0c89a5f3d" alt="Textile">
-              <h3>Textile & Handicrafts</h3>
-              <p>Eco-friendly fabrics and traditional Indian crafts for global markets.</p>
-            </div>
-          </div>
-        </section>
+    /* Carousel (accessible) */
+    .carousel{
+      position:relative;border-radius:var(--radius);overflow:hidden;background:var(--card);box-shadow:var(--shadow)
+    }
+    .carousel-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #e9eef3}
+    .carousel-track{
+      position:relative;min-height:280px
+    }
+    .slide{
+      position:absolute;inset:0;padding:clamp(16px,3vw,24px);opacity:0;transition:opacity .45s ease;background:var(--card);
+      display:grid;place-content:center;text-align:center
+    }
+    .slide.active{opacity:1}
+    .carousel-controls{
+      display:flex;align-items:center;justify-content:center;gap:10px;padding:10px
+    }
+    .btn{
+      border:none;background:#0f3b57;color:#fff;padding:10px 12px;border-radius:10px;cursor:pointer
+    }
+    .btn.secondary{background:#154a6f}
+    .btn.ghost{background:transparent;border:1px solid #2f6e96;color:#0f3b57}
+    .btn:focus-visible{outline:none;box-shadow:var(--ring)}
+    .dots{display:flex;align-items:center;justify-content:center;gap:6px;padding-bottom:12px}
+    .dot{
+      width:10px;height:10px;border-radius:50%;background:#c7d7e5;border:none
+    }
+    .dot.active{background:#0f3b57}
 
-        <section id="process">
-          <h2>Export Process / How We Work</h2>
-          <ul>
-            <li>Inquiry & Quotation</li>
-            <li>Order Confirmation</li>
-            <li>Quality Inspection</li>
-            <li>Packaging & Labeling</li>
-            <li>Logistics & Documentation</li>
-            <li>Shipment Tracking</li>
-            <li>After-Sales Support</li>
-          </ul>
-        </section>
+    /* Certificates ticker carousel */
+    .ticker{
+      overflow:hidden;border-radius:var(--radius);border:1px solid #e9eef3;background:var(--card);box-shadow:var(--shadow)
+    }
+    .ticker-row{
+      display:flex;gap:18px;align-items:center;white-space:nowrap;animation:ticker 20s linear infinite; padding:12px
+    }
+    .ticker:hover .ticker-row{animation-play-state:paused}
+    @keyframes ticker{
+      from{transform:translateX(0)}
+      to{transform:translateX(-50%)}
+    }
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;background:#eef6fb;color:#0f3b57;border:1px solid #cfe4f2;
+      padding:8px 12px;border-radius:999px;white-space:nowrap
+    }
 
-        <section id="cert">
-          <h2>Certifications & Compliance</h2>
-          <p>We are a certified exporter adhering to international trade standards.</p>
-          <ul>
-            <li>IEC (Import Export Code)</li>
-            <li>APEDA Registration</li>
-            <li>FIEO Membership</li>
-            <li>ISO Certificate</li>
-            <li>MSME / Startup India Registration</li>
-            <li>FSSAI (for food items)</li>
-            <li>Phytosanitary Certificate (for agri exports)</li>
-          </ul>
-          <div class="cert-logos">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/ISO_Logo.svg" alt="ISO">
-            <img src="https://apeda.gov.in/apedawebsite/images/apeda_logo.png" alt="APEDA">
-            <img src="https://msme.gov.in/sites/default/files/msme-logo.png" alt="MSME">
-          </div>
-        </section>
+    /* Contact + map */
+    .map-wrap{aspect-ratio:16/9;border:0;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    iframe{width:100%;height:100%;border:0}
 
-        <section id="global">
-          <h2>Global Reach / Countries We Export To</h2>
-          <p>We currently export to UAE, Saudi Arabia, UK, Singapore, and expanding to Europe and Africa.</p>
-          <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31516.63344461901!2d80.2707182!3d13.0826802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f4b2b69a7d1%3A0x42d53bfa7b8f1c2!2sChennai!5e0!3m2!1sen!2sin!4v1686590722234"></iframe>
-          </div>
-        </section>
+    /* Footer */
+    footer{background:var(--brand-ink);color:#fff;padding:22px 0;text-align:center;margin-top:12px}
 
-        <section id="gallery">
-          <h2>Gallery</h2>
-          <div class="grid">
-            <img src="https://images.unsplash.com/photo-1565958011705-44e211b4a33a" alt="Gallery 1">
-            <img src="https://images.unsplash.com/photo-1615937663158-0c0532b46c8a" alt="Gallery 2">
-            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d" alt="Gallery 3">
-            <img src="https://images.unsplash.com/photo-1604328698692-f76ea9498f58" alt="Gallery 4">
-          </div>
-        </section>
+    /* Container queries for cards (progressive enhance) */
+    @container (min-width:520px){
+      .card--product{grid-template-columns:1fr;display:grid}
+      .card--product h3{margin-top:2px}
+    }
+    .products{container-type:inline-size;container-name:products}
 
-        <section id="technical">
-          <h2>Technical & Design Must-Haves</h2>
-          <ul>
-            <li>✅ Mobile-friendly (most buyers browse on phones)</li>
-            <li>✅ Fast loading speed (&lt;3 sec)</li>
-            <li>✅ SSL Certificate (https://) for trust & ranking</li>
-            <li>✅ High-quality, compressed images</li>
-            <li>✅ SEO optimization for Google visibility</li>
-            <li>✅ Clean, modern fonts & color palette (blue, green, or white)</li>
-          </ul>
-        </section>
-
-        <section id="contact">
-          <h2>Contact Us</h2>
-          <p>Email: info@lunoviaexports.com</p>
-          <p>Phone: +91 98765 43210</p>
-          <p>Address: Koovathur, Chengalpet District, Tamil Nadu, India</p>
-        </section>
-
-        <footer>
-          <p>&copy; 2025 Lunovia Exports Pvt Ltd. All Rights Reserved.</p>
-        </footer>
-
-        <script>
-          // Smooth scroll
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-              e.preventDefault();
-              document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-          });
-        </script>
-
-      </body>
-      </html>
-          <h3>2. Order Confirmation</h3>
-          <p>Once you approve the quotation, we'll send a formal purchase order for confirmation. This includes payment terms, delivery schedules, and product specifications for your review and signature.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>3. Quality Inspection</h3>
-          <p>Our quality control team conducts thorough inspections at multiple stages: raw material selection, production process, and final product verification to ensure compliance with international standards.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>4. Packaging & Labeling</h3>
-          <p>Products are carefully packaged using export-grade materials with proper labeling that includes product details, handling instructions, and necessary certifications to meet destination country requirements.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>5. Logistics & Documentation</h3>
-          <p>We handle all export documentation including customs clearance, certificates of origin, phytosanitary certificates, and shipping documents to ensure smooth international transit.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>6. Shipment Tracking</h3>
-          <p>Track your shipment in real-time through our online portal. Receive regular updates about your cargo's location, estimated arrival time, and any relevant transit information.</p>
-        </div>
-        <div class="carousel-item">
-          <h3>7. After-Sales Support</h3>
-          <p>Our commitment doesn't end with delivery. We provide comprehensive post-sale support including product handling guidance, documentation assistance, and prompt resolution of any concerns.</p>
-        </div>
+    /* Responsive tweaks */
+    @media (max-width: 820px){
+      .nav-links{display:none}
+      .hero-inner{padding:42px 0}
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <div class="topbar" role="navigation" aria-label="Primary">
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">LE</div>
+        <div class="brand-name">Lunovia Exports Pvt Ltd</div>
       </div>
-      <div class="carousel-nav">
-        <button class="prev" onclick="moveCarousel(-1)">❮</button>
-        <button class="next" onclick="moveCarousel(1)">❯</button>
+      <nav class="nav-links" aria-label="In-page">
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#process">Process</a>
+        <a href="#cert">Certifications</a>
+        <a href="#global">Global</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#technical">Technical</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="hamburger" id="openDrawer" aria-label="Open menu" aria-haspopup="dialog" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Off-canvas Drawer -->
+  <div class="scrim" id="scrim" tabindex="-1" aria-hidden="true"></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Mobile menu">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div style="font-weight:700">Menu</div>
+      <button class="btn ghost" id="closeDrawer" aria-label="Close menu">Close</button>
+    </div>
+    <nav style="display:grid;gap:6px" aria-label="Mobile in-page">
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#process">Export Process</a>
+      <a href="#cert">Certifications</a>
+      <a href="#global">Global Reach</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#technical">Technical</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container hero-inner">
+      <h1>Exporting India’s Freshness & Innovation Worldwide</h1>
+      <p>High‑quality agri products, spices, edible oils, textiles, minerals, tea, coffee, marine, and eco‑friendly products—delivered with quality and care.</p>
+      <a class="hero-cta" href="#contact">Request a Quote →</a>
+      <div class="hero-badges" aria-hidden="true">
+        <span class="badge">ISO</span>
+        <span class="badge">APEDA</span>
+        <span class="badge">FSSAI</span>
+        <span class="badge">IEC</span>
       </div>
-      <div class="carousel-dots"></div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <div class="card">
+        <p>Lunovia Exports Pvt Ltd is a diversified export company from India dealing in high‑quality agri products, spices, edible oils, textiles, minerals, tea, coffee, marine and eco‑friendly products. We aim to deliver excellence and sustainability through every shipment.</p>
+        <p><strong>Vision:</strong> Delivering India’s natural bounty worldwide with integrity and innovation.</p>
+        <p><strong>Mission:</strong> To be a trusted partner for global buyers by ensuring quality, timely delivery, and ethical trade practices.</p>
+        <p><strong>Why Choose Us?</strong> Rigorous quality control, certified standards, customized packaging, and strong farmer & supplier partnerships.</p>
+      </div>
     </div>
   </section>
 
-  <section id="cert">
-    <h2>Certifications & Compliance</h2>
-    <p style="text-align:center; max-width:900px; margin:0 auto 18px;">We are a certified exporter adhering to international trade standards. Below are the certificates and registrations that validate our compliance and quality.</p>
-    <div class="cert-carousel-container">
-      <div class="cert-track">
-        <div class="cert-slide active">
+  <!-- Products -->
+  <section id="products" class="alt">
+    <div class="container products">
+      <h2>Our Products</h2>
+      <div class="grid">
+        <article class="card card--product">
+          <img loading="lazy" src="fruits.jpg" alt="Fresh fruits and vegetables" />
           <div>
-            <strong>IEC (Import Export Code)</strong>
-            <div style="font-size:0.9em; margin-top:6px;">Registered exporter code enabling international trade and customs clearance.</div>
+            <h3>Fruits & Vegetables</h3>
+            <p class="muted">Fresh, export‑grade produce with global quality standards.</p>
           </div>
-        </div>
-        <div class="cert-slide">
+        </article>
+        <article class="card card--product">
+          <img loading="lazy" src="spices_grain.jpg" alt="Spices and grains assortment" />
           <div>
-            <strong>APEDA Registration</strong>
-            <div style="font-size:0.9em; margin-top:6px;">Assures agricultural export standards and market access for agri-products.</div>
+            <h3>Spices & Grains</h3>
+            <p class="muted">Authentic Indian spices & premium grains packed securely.</p>
           </div>
-        </div>
-        <div class="cert-slide">
+        </article>
+        <article class="card card--product">
+          <img loading="lazy" src="meat.jpeg" alt="Marine products on ice" />
           <div>
-            <strong>FIEO Membership</strong>
-            <div style="font-size:0.9em; margin-top:6px;">Membership with Federation of Indian Export Organisations for trade facilitation.</div>
+            <h3>Marine & Meat Products</h3>
+            <p class="muted">Frozen seafood and poultry exported with hygiene assurance.</p>
           </div>
-        </div>
-        <div class="cert-slide">
+        </article>
+        <article class="card card--product">
+          <img loading="lazy" src="textile.jpg" alt="Textiles and handicrafts" />
           <div>
-            <strong>ISO Certificate</strong>
-            <div style="font-size:0.9em; margin-top:6px;">International standards for quality management and processes.</div>
+            <h3>Textile & Handicrafts</h3>
+            <p class="muted">Eco‑friendly fabrics and traditional Indian crafts for global markets.</p>
           </div>
-        </div>
-        <div class="cert-slide">
-          <div>
-            <strong>MSME / Startup India Registration</strong>
-            <div style="font-size:0.9em; margin-top:6px;">Recognition as a micro/small enterprise enabling various benefits and compliance.</div>
-          </div>
-        </div>
-        <div class="cert-slide">
-          <div>
-            <strong>FSSAI (Food Safety)</strong>
-            <div style="font-size:0.9em; margin-top:6px;">Food safety certification for handling and exporting food items.</div>
-          </div>
-        </div>
-        <div class="cert-slide">
-          <div>
-            <strong>Phytosanitary Certificate</strong>
-            <div style="font-size:0.9em; margin-top:6px;">Certifies plant health compliance for agricultural shipments.</div>
-          </div>
-        </div>
+        </article>
       </div>
-      <div class="cert-nav">
-        <button class="prev" onclick="moveCert(-1)">❮</button>
-        <button class="next" onclick="moveCert(1)">❯</button>
-      </div>
-      <div class="cert-dots" id="certDots"></div>
     </div>
   </section>
 
+  <!-- Process: Accessible Carousel -->
+  <section id="process">
+    <div class="container">
+      <h2>Export Process</h2>
+
+      <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Export process steps">
+        <div class="carousel-header">
+          <div class="muted" aria-live="polite"><span id="slideStatus">Slide 1 of 7</span></div>
+          <div>
+            <button class="btn ghost" id="toggleAuto" aria-pressed="true" aria-label="Pause auto‑rotation">Pause</button>
+          </div>
+        </div>
+
+        <div class="carousel-track" id="processTrack">
+          <article class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 7">
+            <h3>1. Inquiry & Quotation</h3>
+            <p>Share your requirements and receive a tailored quotation covering product specs, packaging, logistics, and timelines.</p>
+          </article>
+          <article class="slide" role="group" aria-roledescription="slide" aria-label="2 of 7">
+            <h3>2. Order Confirmation</h3>
+            <p>On approval, a formal purchase order confirms payment terms, delivery schedules, and specifications for signature.</p>
+          </article>
+          <article class="slide" role="group" aria-roledescription="slide" aria-label="3 of 7">
+            <h3>3. Quality Inspection</h3>
+            <p>QC checks at raw input, in‑process, and final stages ensure compliance with international standards.</p>
+          </article>
+          <article class="slide" role="group" aria-roledescription="slide" aria-label="4 of 7">
+            <h3>4. Packaging & Labeling</h3>
+            <p>Export‑grade packaging with compliant labeling for product details, handling, and certifications.</p>
+          </article>
+          <article class="slide" role="group" aria-roledescription="slide" aria-label="5 of 7">
+            <h3>5. Logistics & Documentation</h3>
+            <p>Customs clearance, certificates of origin, phytosanitary, and shipping documents handled end‑to‑end.</p>
+          </article>
+          <article class="slide" role="group" aria-roledescription="slide" aria-label="6 of 7">
+            <h3>6. Shipment Tracking</h3>
+            <p>Real‑time tracking with regular updates on location and ETA via our portal.</p>
+          </article>
+          <article class="slide" role="group" aria-roledescription="slide" aria-label="7 of 7">
+            <h3>7. After‑Sales Support</h3>
+            <p>Post‑delivery guidance, documentation assistance, and prompt resolution of any concerns.</p>
+          </article>
+        </div>
+
+        <div class="carousel-controls" role="group" aria-label="Carousel controls">
+          <button class="btn" id="prevSlide" aria-label="Previous slide">❮</button>
+          <button class="btn" id="nextSlide" aria-label="Next slide">❯</button>
+        </div>
+        <div class="dots" id="processDots" role="tablist" aria-label="Slide picker"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications: marquee ticker with pause on hover -->
+  <section id="cert" class="alt">
+    <div class="container">
+      <h2>Certifications & Compliance</h2>
+      <p class="muted" style="text-align:center;max-width:900px;margin:0 auto 18px">
+        We adhere to international trade standards and maintain key registrations to validate compliance and quality.
+      </p>
+
+      <div class="ticker" aria-live="polite">
+        <div class="ticker-row" id="certTicker">
+          <span class="chip"><strong>IEC</strong> — Import Export Code</span>
+          <span class="chip"><strong>APEDA</strong> — Agri export standards</span>
+          <span class="chip"><strong>FIEO</strong> — Trade facilitation</span>
+          <span class="chip"><strong>ISO</strong> — Quality management</span>
+          <span class="chip"><strong>MSME/Startup</strong> — Compliance & benefits</span>
+          <span class="chip"><strong>FSSAI</strong> — Food safety</span>
+          <span class="chip"><strong>Phytosanitary</strong> — Plant health compliance</span>
+          <!-- duplicate for seamless loop -->
+          <span class="chip"><strong>IEC</strong> — Import Export Code</span>
+          <span class="chip"><strong>APEDA</strong> — Agri export standards</span>
+          <span class="chip"><strong>FIEO</strong> — Trade facilitation</span>
+          <span class="chip"><strong>ISO</strong> — Quality management</span>
+          <span class="chip"><strong>MSME/Startup</strong> — Compliance & benefits</span>
+          <span class="chip"><strong>FSSAI</strong> — Food safety</span>
+          <span class="chip"><strong>Phytosanitary</strong> — Plant health compliance</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global -->
   <section id="global">
-    <h2>Global Reach / Countries We Export To</h2>
-    <p>We currently export to UAE, Saudi Arabia, UK, Singapore, and expanding to Europe and Africa.</p>
-    <div class="map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31516.63344461901!2d80.2707182!3d13.0826802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f4b2b69a7d1%3A0x42d53bfa7b8f1c2!2sChennai!5e0!3m2!1sen!2sin!4v1686590722234"></iframe>
+    <div class="container">
+      <h2>Global Reach</h2>
+      <div class="card">
+        <p>We currently export to UAE, Saudi Arabia, UK, Singapore, and are expanding to Europe and Africa.</p>
+        <div class="map-wrap" role="img" aria-label="Map showing Chennai and global export reach">
+          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31516.63344461901!2d80.2707182!3d13.0826802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f4b2b69a7d1%3A0x42d53bfa7b8f1c2!2sChennai!5e0!3m2!1sen!2sin!4v1686590722234"
+            allowfullscreen="" aria-hidden="false"></iframe>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="grid">
-      <img src="5018789.jpg" alt="Gallery 1">
-      <img src="59.jpg" alt="Gallery 2">
-      <img src="meat-export.jpg" alt="Gallery 3">
-      <img src="Pakistan-TA-Exports.jpg" alt="Gallery 4">
+  <!-- Gallery: responsive grid -->
+  <section id="gallery" class="alt">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="grid" id="galleryGrid" style="grid-auto-rows:1fr">
+        <img loading="lazy" class="card" src="5018789.jpg" alt="Field harvest" />
+        <img loading="lazy" class="card" src="59.jpg" alt="Processing line" />
+        <img loading="lazy" class="card" src="meat-export.jpg" alt="Packed goods" />
+        <img loading="lazy" class="card" src="Pakistan-TA-Exports.jpg" alt="Loading for export" />
+        <img loading="lazy" class="card" src="lunovia.jpg" alt="Lunovia facility" />
+        <img loading="lazy" class="card" src="exports.jpg" alt="Exports banner" />
+      </div>
     </div>
   </section>
 
+  <!-- Technical -->
   <section id="technical">
-    <h2>Technical & Design Must-Haves</h2>
-    <ul>
-      <li>✅ Mobile-friendly (most buyers browse on phones)</li>
-      <li>✅ Fast loading speed (&lt;3 sec)</li>
-      <li>✅ SSL Certificate (https://) for trust & ranking</li>
-      <li>✅ High-quality, compressed images</li>
-      <li>✅ SEO optimization for Google visibility</li>
-      <li>✅ Clean, modern fonts & color palette (blue, green, or white)</li>
-    </ul>
+    <div class="container">
+      <h2>Technical & Design Must‑Haves</h2>
+      <div class="card">
+        <ul>
+          <li>Mobile‑first layout with CSS Grid/Flex and container queries where supported.</li>
+          <li>Fast loading (lazy images, compressed assets, minimal blocking JS/CSS).</li>
+          <li>SSL (HTTPS), semantic HTML, and ARIA for accessibility and SEO.</li>
+          <li>High‑quality, compressed images and responsive sizes.</li>
+          <li>SEO metadata, descriptive alt text, and logical heading order.</li>
+          <li>Clean typography and a consistent color system with strong contrast.</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p><strong>GSTIN :</strong> 33AAGCL5653H1ZH</p>
-    <p><strong>CIN :</strong> U46301TZ2025PTC036615</p>
-    <p><strong>Phone :</strong> 78100 73451</p>
-    <p><strong>Email :</strong> <a href="mailto:lunoviaexports@gmail.com">lunoviaexports@gmail.com</a></p>
-    <p><strong>Address :</strong> No.4/305,- A1, NGGO’s Colony, Bagalur Road, Hosur - 635109.</p>
+  <!-- Contact -->
+  <section id="contact" class="alt">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <div class="grid">
+        <div class="card">
+          <p><strong>GSTIN:</strong> 33AAGCL5653H1ZH</p>
+          <p><strong>CIN:</strong> U46301TZ2025PTC036615</p>
+          <p><strong>Phone:</strong> <a href="tel:+917810073451">+91 78100 73451</a></p>
+          <p><strong>Email:</strong> <a href="mailto:lunoviaexports@gmail.com">lunoviaexports@gmail.com</a></p>
+          <p><strong>Address:</strong> No.4/305,‑ A1, NGGO’s Colony, Bagalur Road, Hosur - 635109.</p>
+        </div>
+        <!-- Secondary Carousel: USPs -->
+        <div class="card">
+          <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Why choose us highlights">
+            <div class="carousel-header">
+              <div class="muted" aria-live="polite"><span id="uspStatus">Slide 1 of 3</span></div>
+              <div>
+                <button class="btn ghost" id="toggleUspAuto" aria-pressed="true" aria-label="Pause auto‑rotation">Pause</button>
+              </div>
+            </div>
+            <div class="carousel-track" id="uspTrack">
+              <div class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+                <h3>Certified Quality</h3>
+                <p>ISO, APEDA, FSSAI & phytosanitary compliance ensures consistent global‑grade quality.</p>
+              </div>
+              <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+                <h3>Reliable Timelines</h3>
+                <p>Process discipline and transparent tracking for predictable ETAs and fewer surprises.</p>
+              </div>
+              <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+                <h3>Custom Solutions</h3>
+                <p>Packaging, labeling, and logistics tailored to your market’s regulations and needs.</p>
+              </div>
+            </div>
+            <div class="carousel-controls" role="group" aria-label="USP controls">
+              <button class="btn" id="uspPrev" aria-label="Previous slide">❮</button>
+              <button class="btn" id="uspNext" aria-label="Next slide">❯</button>
+            </div>
+            <div class="dots" id="uspDots" role="tablist" aria-label="USP picker"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Lunovia Exports Pvt Ltd. All Rights Reserved.</p>
+  <footer role="contentinfo">
+    <div class="container">
+      <p>© 2025 Lunovia Exports Pvt Ltd. All Rights Reserved.</p>
+    </div>
   </footer>
 
   <script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    // Utils
+    const qs = (s,el=document)=>el.querySelector(s);
+    const qsa = (s,el=document)=>Array.from(el.querySelectorAll(s));
+
+    // Off-canvas navigation
+    const drawer = qs('#drawer');
+    const scrim = qs('#scrim');
+    const openBtn = qs('#openDrawer');
+    const closeBtn = qs('#closeDrawer');
+    const toggleDrawer = (open) => {
+      drawer.classList.toggle('open',open);
+      scrim.classList.toggle('show',open);
+      drawer.setAttribute('aria-hidden', String(!open));
+      if(open){ drawer.focus?.(); } else { openBtn.focus?.(); }
+      document.body.style.overflow = open ? 'hidden':'';
+    };
+    openBtn.addEventListener('click',()=>toggleDrawer(true));
+    closeBtn.addEventListener('click',()=>toggleDrawer(false));
+    scrim.addEventListener('click',()=>toggleDrawer(false));
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape' && drawer.classList.contains('open')) toggleDrawer(false);
+    });
+    // Close drawer on nav click
+    qsa('aside.drawer a').forEach(a=>a.addEventListener('click',()=>toggleDrawer(false)));
+
+    // Generic accessible carousel builder (based on APG patterns)
+    function makeCarousel(trackId, dotsId, statusId, prevId, nextId, autoToggleId, intervalMs=5000){
+      const track = qs('#'+trackId);
+      const slides = qsa('.slide', track);
+      const dotsWrap = qs('#'+dotsId);
+      const statusEl = qs('#'+statusId);
+      const prev = prevId ? qs('#'+prevId): null;
+      const next = nextId ? qs('#'+nextId): null;
+      const autoBtn = autoToggleId ? qs('#'+autoToggleId): null;
+
+      let index = 0;
+      let timer = null;
+      let auto = true;
+
+      // dots
+      slides.forEach((_,i)=>{
+        const b = document.createElement('button');
+        b.className='dot'+(i===0?' active':'');
+        b.setAttribute('role','tab');
+        b.setAttribute('aria-label','Go to slide '+(i+1));
+        b.addEventListener('click',()=>go(i,true));
+        dotsWrap.appendChild(b);
       });
-    });
+      const dots = qsa('.dot', dotsWrap);
 
-    // Carousel functionality
-    let currentSlide = 0;
-    const items = document.querySelectorAll('.carousel-item');
-    const dotsContainer = document.querySelector('.carousel-dots');
+      function setStatus(){
+        if(statusEl){
+          statusEl.textContent = 'Slide '+(index+1)+' of '+slides.length;
+        }
+        slides.forEach((s,i)=>{
+          s.classList.toggle('active', i===index);
+          s.setAttribute('aria-label', (i+1)+' of '+slides.length);
+        });
+        dots.forEach((d,i)=>d.classList.toggle('active', i===index));
+      }
+      function go(n, user=false){
+        index = (n + slides.length) % slides.length;
+        setStatus();
+        if(user && auto) restart();
+      }
+      const nextFn = ()=>go(index+1);
+      const prevFn = ()=>go(index-1);
 
-    // Create dots
-    items.forEach((_, index) => {
-      const dot = document.createElement('button');
-      dot.classList.add('carousel-dot');
-      dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-      dot.onclick = () => goToSlide(index);
-      dotsContainer.appendChild(dot);
-    });
+      function start(){
+        if(timer) return;
+        timer = setInterval(nextFn, intervalMs);
+        auto = true;
+        if(autoBtn){
+          autoBtn.setAttribute('aria-pressed','true');
+          autoBtn.textContent='Pause';
+          autoBtn.setAttribute('aria-label','Pause auto‑rotation');
+        }
+      }
+      function stop(){
+        clearInterval(timer);
+        timer = null;
+        auto = false;
+        if(autoBtn){
+          autoBtn.setAttribute('aria-pressed','false');
+          autoBtn.textContent='Play';
+          autoBtn.setAttribute('aria-label','Resume auto‑rotation');
+        }
+      }
+      function restart(){ stop(); start(); }
 
-    const dots = document.querySelectorAll('.carousel-dot');
-    dots[0].classList.add('active');
+      next?.addEventListener('click',()=>{ nextFn(); });
+      prev?.addEventListener('click',()=>{ prevFn(); });
+      autoBtn?.addEventListener('click',()=>{ auto ? stop(): start(); });
 
-    function moveCarousel(direction) {
-      const newSlide = (currentSlide + direction + items.length) % items.length;
-      goToSlide(newSlide);
+      // keyboard
+      track.addEventListener('keydown',(e)=>{
+        if(e.key==='ArrowRight'){ e.preventDefault(); nextFn(); }
+        if(e.key==='ArrowLeft'){ e.preventDefault(); prevFn(); }
+      });
+      // pause when hovered or focused
+      [track, dotsWrap, prev, next, autoBtn].forEach(el=>{
+        if(!el) return;
+        el.addEventListener('mouseenter', stop);
+        el.addEventListener('mouseleave', ()=>{ if(auto) start(); });
+        el.addEventListener('focusin', stop);
+        el.addEventListener('focusout', ()=>{ if(auto) start(); });
+      });
+
+      setStatus();
+      start();
+      return { go, stop, start };
     }
 
-    function goToSlide(n) {
-      items[currentSlide].classList.remove('active');
-      dots[currentSlide].classList.remove('active');
-      currentSlide = n;
-      items[currentSlide].classList.add('active');
-      dots[currentSlide].classList.add('active');
+    // Build carousels
+    const processCarousel = makeCarousel('processTrack','processDots','slideStatus','prevSlide','nextSlide','toggleAuto',5000);
+    const uspCarousel = makeCarousel('uspTrack','uspDots','uspStatus','uspPrev','uspNext','toggleUspAuto',4500);
+
+    // Progressive enhancement: reduce motion preference
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      processCarousel.stop();
+      uspCarousel.stop();
     }
 
-    // Auto-advance every 5 seconds
-    setInterval(() => moveCarousel(1), 5000);
+    // Gallery: simple light interaction (keyboard focus outlines already handled)
+    // Optional: could add a dialog lightbox if desired.
 
-    // Certificates carousel logic
-    (function(){
-      const certSlides = document.querySelectorAll('.cert-slide');
-      const certDotsContainer = document.getElementById('certDots');
-      let certIndex = 0;
-
-      if(!certSlides.length || !certDotsContainer) return;
-
-      // create dots
-      certSlides.forEach((_, i) => {
-        const d = document.createElement('button');
-        d.className = 'cert-dot';
-        d.setAttribute('aria-label', `Go to certificate ${i+1}`);
-        d.onclick = () => goToCert(i);
-        certDotsContainer.appendChild(d);
-      });
-
-      const certDots = certDotsContainer.querySelectorAll('.cert-dot');
-      certDots[0].classList.add('active');
-
-      function moveCert(dir){
-        const next = (certIndex + dir + certSlides.length) % certSlides.length;
-        goToCert(next);
-      }
-
-      function goToCert(n){
-        certSlides[certIndex].classList.remove('active');
-        certDots[certIndex].classList.remove('active');
-        certIndex = n;
-        certSlides[certIndex].classList.add('active');
-        certDots[certIndex].classList.add('active');
-      }
-
-      // expose to global for nav buttons
-      window.moveCert = moveCert;
-
-      // auto-advance
-      setInterval(() => moveCert(1), 4500);
-    })();
+    // Lazy load images via loading="lazy" already added
   </script>
-
 </body>
 </html>
