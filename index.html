@@ -311,12 +311,7 @@
       <h2>Export Process</h2>
 
       <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Export process steps">
-        <div class="carousel-header">
-          <div class="muted" aria-live="polite"><span id="slideStatus">Slide 1 of 7</span></div>
-          <div>
-            <button class="btn ghost" id="toggleAuto" aria-pressed="true" aria-label="Pause auto‑rotation">Pause</button>
-          </div>
-        </div>
+        <div class="carousel-header"></div>
 
         <div class="carousel-track" id="processTrack">
           <article class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 7">
@@ -393,12 +388,12 @@
     <div class="container">
       <h2>Global Reach</h2>
       <div class="card">
-        <p>We currently export to UAE, Saudi Arabia, UK, Singapore, and are expanding to Europe and Africa.</p>
-        <div class="map-wrap" role="img" aria-label="Map showing Chennai and global export reach">
-          <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31516.63344461901!2d80.2707182!3d13.0826802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526f4b2b69a7d1%3A0x42d53bfa7b8f1c2!2sChennai!5e0!3m2!1sen!2sin!4v1686590722234"
-            allowfullscreen="" aria-hidden="false"></iframe>
-        </div>
+          <p>We currently export to UAE, Saudi Arabia, UK, Singapore, and are expanding to Europe and Africa.</p>
+          <div class="map-wrap" role="img" aria-label="Map showing NGGO’s Colony, Bagalur Road, Hosur">
+            <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=NGGO%27s+Colony,+Bagalur+Road,+Hosur+635109&output=embed"
+              allowfullscreen="" aria-hidden="false"></iframe>
+          </div>
       </div>
     </div>
   </section>
@@ -419,7 +414,7 @@
   </section>
 
   <!-- Technical -->
-  <section id="technical">
+ <!-- <section id="technical">
     <div class="container">
       <h2>Technical & Design Must‑Haves</h2>
       <div class="card">
@@ -433,7 +428,7 @@
         </ul>
       </div>
     </div>
-  </section>
+  </section>-->
 
   <!-- Contact -->
   <section id="contact" class="alt">
@@ -448,7 +443,24 @@
           <p><strong>Address:</strong> No.4/305,‑ A1, NGGO’s Colony, Bagalur Road, Hosur - 635109.</p>
         </div>
         <!-- Secondary Carousel: USPs -->
-        <div class="card">
+         <div class="card">
+          <h3>Request a Quotation</h3>
+          <form id="quoteForm" style="display:grid;gap:10px;margin-top:12px">
+            <label style="font-size:0.95em">Name
+              <input id="qName" type="text" name="Name" required style="width:100%;padding:10px;border:1px solid #e3e7eb;border-radius:8px" />
+            </label>
+            <label style="font-size:0.95em">Email
+              <input id="qEmail" type="email" name="Email" required style="width:100%;padding:10px;border:1px solid #e3e7eb;border-radius:8px" />
+            </label>
+            <label style="font-size:0.95em">Quotation / Message
+              <textarea id="qMessage" name="Quotation" rows="5" required style="width:100%;padding:10px;border:1px solid #e3e7eb;border-radius:8px"></textarea>
+            </label>
+            <div>
+              <button id="qSubmit" type="submit" class="btn" style="background:#0f3b57">Submit</button>
+            </div>
+          </form>
+        </div>
+        <!--<div class="card">
           <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Why choose us highlights">
             <div class="carousel-header">
               <div class="muted" aria-live="polite"><span id="uspStatus">Slide 1 of 3</span></div>
@@ -478,7 +490,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </section>
 
   <footer role="contentinfo">
@@ -518,7 +530,7 @@
       const track = qs('#'+trackId);
       const slides = qsa('.slide', track);
       const dotsWrap = qs('#'+dotsId);
-      const statusEl = qs('#'+statusId);
+      const statusEl = statusId ? qs('#'+statusId) : null;
       const prev = prevId ? qs('#'+prevId): null;
       const next = nextId ? qs('#'+nextId): null;
       const autoBtn = autoToggleId ? qs('#'+autoToggleId): null;
@@ -602,7 +614,7 @@
     }
 
     // Build carousels
-    const processCarousel = makeCarousel('processTrack','processDots','slideStatus','prevSlide','nextSlide','toggleAuto',5000);
+    const processCarousel = makeCarousel('processTrack','processDots', null, 'prevSlide','nextSlide', null, 5000);
     const uspCarousel = makeCarousel('uspTrack','uspDots','uspStatus','uspPrev','uspNext','toggleUspAuto',4500);
 
     // Progressive enhancement: reduce motion preference
@@ -615,6 +627,57 @@
     // Optional: could add a dialog lightbox if desired.
 
     // Lazy load images via loading="lazy" already added
+  </script>
+  <script>
+    // Handle quotation form: compose mailto and clear inputs + show alert
+    (function(){
+      const form = document.getElementById('quoteForm');
+      if(!form) return;
+      const to = 'selvamuthukumaranboopalan@gmail.com';
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        const name = document.getElementById('qName')?.value.trim() || '';
+        const email = document.getElementById('qEmail')?.value.trim() || '';
+        const message = document.getElementById('qMessage')?.value.trim() || '';
+
+        // If a server endpoint is provided via data-endpoint on the form (e.g., Formspree), POST there first
+        const endpoint = form.dataset.endpoint || '';
+        if(endpoint){
+          try{
+            const payload = { Name: name, Email: email, Quotation: message };
+            const res = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            if(res.ok){
+              alert('Request Sent');
+              form.reset();
+              return;
+            }else{
+              // fall back to mailto if server returns error
+              console.warn('Server response not OK', res.status);
+            }
+          }catch(err){
+            console.warn('Error posting to endpoint:', err);
+            // continue to mailto fallback
+          }
+        }
+
+        // Fallback: open mail client with prefilled subject and body
+        const subject = encodeURIComponent('Quotation Request from ' + (name || email || 'Website'));
+        let bodyText = '';
+        if(name) bodyText += 'Name: ' + name + '\n';
+        if(email) bodyText += 'Email: ' + email + '\n';
+        bodyText += '\nQuotation:\n' + message + '\n';
+        const body = encodeURIComponent(bodyText);
+        const mailto = `mailto:${to}?subject=${subject}&body=${body}`;
+        // Attempt to open mail client
+        window.location.href = mailto;
+        try{ alert('Request Sent'); }catch(err){}
+        form.reset();
+      });
+    })();
   </script>
 </body>
 </html>
